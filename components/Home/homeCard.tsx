@@ -1,9 +1,22 @@
 "use client";
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import { RiHistoryLine, RiMapPin2Fill } from 'react-icons/ri';
 import { useRouter } from "next/navigation";
+import {formatTime} from "./function"
 export default function HomeCard() {
   const router = useRouter();
+  const [currentTime, setCurrentTime] = useState(formatTime(new Date()));
+  
+  useEffect(() => {
+        const timerId = setInterval(() => {
+            setCurrentTime(formatTime(new Date()));
+        }, 1000); 
+
+        return () => clearInterval(timerId);
+    }, []);
+
+ 
   
   return (
     <>
@@ -14,7 +27,7 @@ export default function HomeCard() {
           </div>
           <div className="w-full max-w-xl mx-auto justify-center bg-white border border-gray-200 rounded-2xl shadow-md mt-2 text-center">
                 <p className="text-center lg:text-normal font-medium tracking-tight text-gray-500 mt-2">Live Attendance</p>
-                <h1 className=" lg:text-5xl md:text-4xl sm:text-2xl xs:text-2xl font-extrabold tracking-tight text-sky-800 mt-3">09:01 AM</h1>
+                <h1 className=" lg:text-5xl md:text-4xl sm:text-2xl xs:text-2xl font-extrabold tracking-tight text-sky-800 mt-3">{currentTime}</h1>
                 <p className="text-center lg:text-sm font-medium tracking-tight text-gray-500 mt-2">Monday, 26 April 2025</p>
                 <div className="flex gap-4 mx-10 justify-between mt-8 mb-6">
                   <button
@@ -24,6 +37,7 @@ export default function HomeCard() {
                 > Clock In
                 </button>
                 <button
+                  onClick={()=>router.push("/clock-out")}
                   type="button"
                   className="gap-3 flex w-full outline-1  text-white outline justify-center rounded-lg bg-red-400 px-3 py-3 text-sm/6 font-semibold text-gray-400 hover:bg-red-300 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 text-center"
                 > Clock Out

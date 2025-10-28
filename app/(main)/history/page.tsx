@@ -1,8 +1,11 @@
+'use client'
+import React, { useState } from 'react';
 import Image from "next/image";
 import HistoryCardSlips from "../../../components/History/historyCardSlips"
-
-
-export default function Home() {
+import HistoryMonthYearPicker from "../../../components/History/historyMonthYearPicker"
+import dayjs, { Dayjs } from 'dayjs';
+export default function History() {
+  const [monthYearValue, setMonthYearValue] = useState<Dayjs | null>(dayjs()); 
   const arrayHistoryCardSlips = [
   {
     date: "25",
@@ -20,10 +23,35 @@ export default function Home() {
     working_time: "10:40",
     location: "Jl. Letjen S Parman kav 22-24, Jakarta 11480. (long address clipped for brevity)",
   },
+  {
+    date: "23",
+    month: "April",
+    clock_in: "09:20",
+    clock_out: "19:20",
+    working_time: "10:40",
+    location: "Jl. Letjen S Parman kav 22-24, Jakarta 11480. (long address clipped for brevity)",
+  },
+  {
+    date: "22",
+    month: "April",
+    clock_in: "09:20",
+    clock_out: "19:20",
+    working_time: "10:40",
+    location: "Jl. Letjen S Parman kav 22-24, Jakarta 11480. (long address clipped for brevity)",
+  },
+  {
+    date: "21",
+    month: "April",
+    clock_in: "09:20",
+    clock_out: "19:20",
+    working_time: "10:40",
+    location: "Jl. Letjen S Parman kav 22-24, Jakarta 11480. (long address clipped for brevity)",
+  },
 ];
   return (
     <div className="flex bg-gray-100">    
-        <div className="flex-grow mx-6 mt-6 p-4 bg-white">
+        <div className="flex-grow mx-6 mt-6 p-4 bg-white shadow-md">
+          <div className="flex justify-end"> <HistoryMonthYearPicker value={monthYearValue} onDateChange={setMonthYearValue}/></div>
           {arrayHistoryCardSlips.map((slipData) => (
                   <HistoryCardSlips
                       key={`${slipData.date}-${slipData.month}-${slipData.clock_in}`}

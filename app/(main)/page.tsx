@@ -23,38 +23,9 @@ export default function Home() {
 ];
   return (
     <div className="flex min-h-screen bg-gray-100">    
-    <div className="flex-grow mx-6 mt-6 p-4 bg-white">
+    <div className="flex-grow mx-6 mt-6 p-4 bg-white shadow-md">
         <HomeCard/>
         <div>
-              {/* <div className="w-full max-w-xl mx-auto justify-start bg-white border border-gray-200 rounded-2xl shadow-md mt-7 py-3 flex flex-col gap-5 md:flex-row md:items-center">
-                  <div className="w-full md:w-1/4">
-                    <p className="text-center text-3xl font-medium tracking-tight text-gray-500 mt-2">25</p>
-                    <p className="text-center text-normal font-medium tracking-tight text-gray-500 mt-2">April</p>
-                  </div>
-                  <div className="w-full mx-2 md:w-3/4 md:mx-0">
-                    <div className="flex flex-row justify-around">
-                      <div className="">
-                        <p className="text-center text-sm font-bold tracking-tight text-gray-400 mt-2">Clock in</p>
-                        <p className="text-center text-xl font-bold tracking-tight text-lime-500 mt-2">08:00</p>
-                      </div>
-                      <div className="">
-                        <p className="text-center text-sm font-bold tracking-tight text-gray-400 mt-2">Clock Out</p>
-                        <p className="text-center text-xl font-bold tracking-tight text-red-500 mt-2">17:20</p>
-                      </div>
-                      <div className="">
-                        <p className="text-center text-sm font-bold tracking-tight text-gray-400 mt-2">Working Time</p>
-                        <p className="text-center text-xl font-bold tracking-tight text-gray-500 mt-2">09:20</p>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col items-center gap-0 mx-3 mt-3 md:flex-row md:gap-2 md:mr-4">
-                      <RiMapPin2Fill className="w-5 h-5 text-gray-400"/>
-                        <p className="flex-1 text-center text-xs font-medium tracking-tight text-gray-400 mt-2 md:text-start md:mt-0">
-                          Jl. Letjen S Parman kav 22-24, Jakarta 11480.Jl. Letjen S Parman kav 22-24, Jakarta 11480.Jl. Letjen S Parman kav 22-24, Jakarta 11480.Jl. Letjen S Parman kav 22-24, Jakarta 11480.
-                        </p>
-                    </div>
-                </div>
-              </div> */}
               {arrayHistoryCardSlips.map((slipData) => (
                   <HistoryCardSlips
                       key={`${slipData.date}-${slipData.month}-${slipData.clock_in}`}
